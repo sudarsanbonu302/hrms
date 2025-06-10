@@ -1,15 +1,14 @@
+import { AntDesign, Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
-  View,
+  Image,
+  SafeAreaView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  Image,
-  StyleSheet,
-  SafeAreaView,
+  View,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
 
 const aashditLogo = require('../../assets/images/logo.png');
 const headerbg = require('../../assets/images/logoshawdo.png');
@@ -18,12 +17,12 @@ const EmployeeLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <LinearGradient
-      colors={['#28ABE2', '#1589BA']}
-      start={{ x: 0.1, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.container}
-    >
+    // <LinearGradient
+    //   colors={['#28ABE2', '#1589BA']}
+    //   start={{ x: 0.1, y: 0 }}
+    //   end={{ x: 1, y: 1 }}
+    //   style={styles.container}
+    // >
       <SafeAreaView style={styles.safeArea}>
         <Image source={headerbg} style={styles.headerimg} />
         <View style={styles.header}>
@@ -33,16 +32,18 @@ const EmployeeLogin = () => {
             <Text style={styles.subtitle}>HR Management Application</Text>
           </View>
           <View style={styles.headerlogo}>
-             <Image source={aashditLogo} style={styles.logo} />
+            <Image source={aashditLogo} style={styles.logo} />
           </View>
-         
         </View>
 
         <View style={styles.formContainer}>
           <Text style={styles.loginTitle}>Login with{'\n'}your credential</Text>
+          <View style={styles.dividerContainer}>
+            <View style={styles.divider} />
+          </View>
 
           <View style={styles.inputContainer}>
-            <Ionicons name="person-outline" size={20} color="#aaa" style={styles.icon} />
+            <AntDesign name="idcard" size={20} color="#aaa" style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter Employee Id"
@@ -51,7 +52,7 @@ const EmployeeLogin = () => {
           </View>
 
           <View style={styles.inputContainer}>
-            <Ionicons name="lock-closed-outline" size={20} color="#aaa" style={styles.icon} />
+            <SimpleLineIcons name="lock" size={20} color="#aaa" style={styles.icon} />
             <TextInput
               style={styles.input}
               placeholder="Enter Password"
@@ -73,12 +74,14 @@ const EmployeeLogin = () => {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.backButton}>
-            <Ionicons name="arrow-back" size={20} color="#333" />
+            <View style={styles.backCircle}>
+              <Ionicons name="arrow-undo-outline" color="#aaa" size={15} />
+            </View>
             <Text style={styles.backText}>Back</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-    </LinearGradient>
+    // </LinearGradient>
   );
 };
 
@@ -90,10 +93,11 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+    backgroundColor: '#1B95C8',
   },
   headerimg: {
     width: '100%',
-    height: 250,
+    height: 240,
     resizeMode: 'cover',
     position: 'absolute',
     top: 50,
@@ -102,34 +106,43 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingHorizontal: 30,
-    marginTop: 120,
+    marginTop: 100,
   },
   welcome: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
   },
   title: {
-    fontSize: 45,
-    fontWeight: 900,
+    fontSize: 47,
+    fontWeight: '900',
     color: '#FAC11A',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 14,
     color: 'white',
-     fontWeight: 400,
+    fontWeight: '400',
+  },
+  headerlogo: {
+    backgroundColor: 'white',
+    borderRadius: 40,
+    padding: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    marginTop: -10,
+    borderWidth: 1,
+    borderColor: '#eee',
   },
   logo: {
-    width: 83,
-    height: 83,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
-     backgroundColor: 'white',
-    
-  },
-  headerlogo:{
-   width: 65,
-    height: 23,
   },
   formContainer: {
     marginTop: 40,
@@ -141,53 +154,75 @@ const styles = StyleSheet.create({
   },
   loginTitle: {
     textAlign: 'center',
-    fontSize: 18,
-    marginBottom: 20,
+    fontSize: 20,
     fontWeight: '500',
     color: '#333',
+    marginTop:30,
+    
+  },
+  dividerContainer: {
+    alignItems: 'center',
+    marginVertical: 12,
+    marginBottom:40
+  },
+  divider: {
+    width: '70%',
+    height: 1,
+    backgroundColor: '#E5E5E5',
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 15,
-    backgroundColor: '#F8F8F8',
+    borderWidth: 1,
+    borderColor: '#E8E8E8',
+    borderRadius: 10,
+    backgroundColor: '#FAFAFA',
+    paddingHorizontal: 12,
+    height: 55,
+    marginBottom: 18,
   },
   icon: {
-    marginRight: 8,
+    marginRight: 5,
+    marginLeft:8
   },
   iconRight: {
     marginLeft: 'auto',
   },
   input: {
     flex: 1,
-    height: 45,
     color: '#333',
+    paddingLeft:15
   },
   loginButton: {
     backgroundColor: '#FFC107',
-    paddingVertical: 12,
+    paddingVertical: 16,
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 5,
     alignItems: 'center',
+    elevation: 2,
   },
   loginButtonText: {
     color: '#000',
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 18,
   },
   backButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 45,
     alignSelf: 'center',
   },
   backText: {
     marginLeft: 5,
-    color: '#333',
+    color: '#555',
     fontSize: 16,
+  },
+  backCircle: {
+    width: 25,
+    height: 25,
+    borderRadius: 16,
+    backgroundColor: '#D3D3D3',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
   },
 });
