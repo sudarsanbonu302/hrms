@@ -1,8 +1,17 @@
 import { Stack } from "expo-router";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store/store';
 
 export default function RootLayout() {
-  return <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
-           <Stack.Screen name="index"  />
-           
-         </Stack>
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
+          <Stack.Screen name="index" />
+          <Stack.Screen name="(employee)/employeelogin" />
+        </Stack>
+      </PersistGate>
+    </Provider>
+  );
 }
