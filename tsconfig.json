@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/features/auth/authThunks.jsx", "app/utils/tokenService.jsx", "app/store/store.js", "app/store/hooks.jsx", "app/api/authAPI.jsx", "app/api/apiClient.jsx", "app/(employee)/reuse.jsx"  ]
+, "app/features/auth/authThunks.jsx", "src/utils/tokenService.jsx", "app/store/store.js", "app/store/hooks.jsx", "app/api/authAPI.jsx", "app/api/apiClient.jsx", "app/(employee)/reuse.jsx", "app/(employee)/employeelogin.tsx"  ]
 }

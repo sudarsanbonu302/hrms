@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { getToken, removeToken } from '../utils/tokenService';
+import axios from "axios";
+import { getToken, removeToken } from "../../src/utils/tokenService";
 
-const BASE_URL = 'http://192.168.3.124:1111/hrms/api/';
+const BASE_URL = "http://192.168.3.124:1111/hrms/api/";
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -26,7 +26,7 @@ apiClient.interceptors.response.use(
   async (error) => {
     if (error.response?.status === 401) {
       await removeToken();
-      // You might want to dispatch logout action here
+      // dispatch logout action need to call
     }
     return Promise.reject(error);
   }

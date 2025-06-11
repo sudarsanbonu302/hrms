@@ -2,11 +2,11 @@ import { useRouter } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import { Animated, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters';
+import { moderateScale, scale, verticalScale } from "react-native-size-matters";
+import Toast from 'react-native-toast-message';
 
 const aashdithlogo = require("../assets/images/logo.png");
 const { height, width } = Dimensions.get("window");
-
 export default function Index() {
   const route = useRouter();
 
@@ -15,20 +15,19 @@ export default function Index() {
   const slideUp = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-   
     Animated.sequence([
       Animated.timing(logoScale, {
         toValue: 1,
         duration: 800,
         useNativeDriver: true,
       }),
-  
+
       Animated.timing(textOpacity, {
         toValue: 1,
         duration: 500,
         useNativeDriver: true,
       }),
-    
+
       Animated.timing(slideUp, {
         toValue: -height,
         duration: 800,
@@ -36,25 +35,27 @@ export default function Index() {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      // Step 4: Redirect after animation
       route.push("/(employee)/employeelogin");
     });
   }, []);
 
   return (
-    <SafeAreaView style={{
-      backgroundColor: "#000080",
-      width,
-      height,
-      justifyContent: "flex-start",
-      alignItems: "center",
-    }}>
+    <>
+    <SafeAreaView
+      style={{
+        backgroundColor: "#000080",
+        width,
+        height,
+        justifyContent: "flex-start",
+        alignItems: "center",
+      }}
+    >
       <Animated.View
         style={{
           alignItems: "center",
           paddingTop: verticalScale(200),
           paddingHorizontal: moderateScale(15),
-          transform: [{ translateY: slideUp }]
+          transform: [{ translateY: slideUp }],
         }}
       >
         <Animated.Image
@@ -63,27 +64,33 @@ export default function Index() {
             transform: [{ scale: logoScale }],
             width: scale(120),
             height: verticalScale(120),
-            resizeMode: "contain"
+            resizeMode: "contain",
           }}
         />
-        <Animated.Text style={{
-          fontSize: moderateScale(32),
-          fontWeight: "bold",
-          marginTop: verticalScale(15),
-          color: "#FAC11A",
-          opacity: textOpacity
-        }}>
+        <Animated.Text
+          style={{
+            fontSize: moderateScale(32),
+            fontWeight: "bold",
+            marginTop: verticalScale(15),
+            color: "#FAC11A",
+            opacity: textOpacity,
+          }}
+        >
           AASHDIT
         </Animated.Text>
-        <Animated.Text style={{
-          fontSize: moderateScale(21),
-          fontWeight: "bold",
-          color: "#ffffff",
-          opacity: textOpacity
-        }}>
+        <Animated.Text
+          style={{
+            fontSize: moderateScale(21),
+            fontWeight: "bold",
+            color: "#ffffff",
+            opacity: textOpacity,
+          }}
+        >
           HR Management Application
         </Animated.Text>
       </Animated.View>
     </SafeAreaView>
+    <Toast />
+    </>
   );
 }
