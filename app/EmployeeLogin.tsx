@@ -1,20 +1,20 @@
+import { login } from "@/src/api/authAPI";
+import { storeToken } from "@/src/utils/tokenService";
 import { AntDesign, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
-import { login } from "../../src/api/authAPI";
-import { storeToken } from "../../src/utils/tokenService";
 
-const aashditLogo = require("../../assets/images/logo.png");
-const headerbg = require("../../assets/images/logoshawdo.png");
+const aashditLogo = require("../assets/images/logo.png");
+const headerbg = require("../assets/images/logoshawdo.png");
 const EmployeeLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setuserName] = useState("");

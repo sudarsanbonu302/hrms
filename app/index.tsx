@@ -35,7 +35,7 @@ export default function Index() {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      route.push("/(employee)/employeelogin");
+      route.push("/EmployeeLogin");
     });
   }, []);
 

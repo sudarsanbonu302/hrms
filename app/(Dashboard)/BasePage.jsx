@@ -1,15 +1,31 @@
 import { Feather } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getWelcomeData } from '../../src/api/authAPI';
 const profile = require("../../assets/images/profile.png");
 const Welcome = () => {
   const today = dayjs().format('YYYY-MM-DD');
   const [selectDate, setSelectDate] = useState(today);
-
+  const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+    const fetchWelcome = async () => {
+      try {
+        const data = await getWelcomeData();
+        setUser(data.data?.empMasterView || {});
+      
+      } catch (e) {
+       
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchWelcome();
+  }, []);
   return (
     <SafeAreaView style={styles.safeArea}>
 
@@ -25,8 +41,9 @@ const Welcome = () => {
             style={styles.profileImage}
           />
           <View>
-            <Text style={styles.profileName}>Dibi Hembram</Text>
-            <Text style={styles.profileRole}>Graphic-Cum-UI/UX Designer</Text>
+            <Text style={styles.profileName}>{user?.userName || ''}</Text>
+         
+            <Text style={styles.profileRole}>{user.empDesgnName || ''}</Text>
           </View>
           <TouchableOpacity style={styles.bell}>
             <Feather name="bell" size={35} color="#ffffff" />
@@ -131,7 +148,7 @@ const styles = StyleSheet.create({
   },
   profileName: {
     color: '#FFFFFF',
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: 500,
   },
   profileRole: {

@@ -9,7 +9,7 @@ export default function RootLayout() {
       <PersistGate loading={null} persistor={persistor}>
         <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
           <Stack.Screen name="index" />
-          <Stack.Screen name="(employee)/employeelogin" />
+          <Stack.Screen name="EmployeeLogin" />
           <Stack.Screen name="(employee)/welcome" />
         </Stack>
       </PersistGate>

@@ -11,3 +11,12 @@ export const login = async (userName, password) => {
     throw error;
   }
 };
+
+export const getWelcomeData = async () => {
+  try {
+    const response = await apiClient.get("welcome");
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
