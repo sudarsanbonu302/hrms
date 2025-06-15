@@ -1,11 +1,13 @@
 import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
+import LeaveFormScreen from './LeaveFormScreen'
+import HrDrawer from './HrDrawer'
 
 const Hrpage = () => {
   return (
-    <SafeAreaView style={{flex:1,justifyContent:"center",alignItems:"center"}}>
-        <Text>This Hr Page</Text>
-    </SafeAreaView>
+    <>
+    <HrDrawer/>
+    </>
   )
 }
 

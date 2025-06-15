@@ -22,21 +22,25 @@ const EmployeeLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const handleLogin = async () => {
+  // const handleLogin = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const data = await login(userName, password);
+  //     console.log("Login API response:", data);
+  //     if (data?.data) {
+  //       await storeToken(data.data);
+  //       router.replace("/(employee)/welcome");
+  //     } else {
+  //       alert("Invalid credentials or token not received");
+  //     }
+  //   } catch (error) {
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+    const handleLogin = () => {
     setLoading(true);
-    try {
-      const data = await login(userName, password);
-      console.log("Login API response:", data);
-      if (data?.data) {
-        await storeToken(data.data);
-        router.replace("/(employee)/welcome");
-      } else {
-        alert("Invalid credentials or token not received");
-      }
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
+    router.replace("/(employee)/welcome");
   };
   return (
     <SafeAreaView style={styles.safeArea}>

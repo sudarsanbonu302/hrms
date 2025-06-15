@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Tabs, usePathname } from "expo-router";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 export default function EmployeeLayout() {
   const pathname = usePathname();
   const hideTabBar = pathname.endsWith("/employeelogin");
@@ -10,20 +10,24 @@ export default function EmployeeLayout() {
     <Tabs
     screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#fff", // White active icon/text
-        tabBarInactiveTintColor: "#fff", // White inactive icon/text
+        tabBarActiveTintColor: "#FAAC1A", 
+        tabBarInactiveTintColor: "#fff", 
         tabBarShowLabel: true,
         tabBarLabelStyle: {
           fontSize: 14,
           fontWeight: "400",
-          marginBottom: 8,
+          marginBottom: 16,
         },
+         tabBarIconStyle: {
+      marginTop: 0,    
+      marginBottom: 0,  
+    },
         tabBarStyle: [
           {
-            backgroundColor: "transparent", // We'll use a gradient background
+            backgroundColor: "#209CD1", 
             borderTopWidth: 0,
             elevation: 0,
-            height: 80,
+            height: 95,
             position: "absolute",
           },
           hideTabBar && { display: "none" },
@@ -49,9 +53,9 @@ export default function EmployeeLayout() {
           ),
           tabBarStyle:  {
             
-          height: 120, // 👈 set your desired height here
-          paddingBottom: 20, // optional: to center icons/text nicely
-          paddingTop: 10,    // optional: top padding for better spacing
+          height: 120, 
+          paddingBottom: 20,
+          paddingTop: 10,  
         },
         }}
       />
@@ -73,12 +77,15 @@ export default function EmployeeLayout() {
           ),
         }}
       />
-         <Tabs.Screen
+     <Tabs.Screen
         name="launch"
         options={{
           title: "Launch",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="laptop-outline" color={color} size={size} />
+          tabBarIcon: ({ color, size}) => (
+            <MaterialCommunityIcons
+              name="silverware-fork-knife"
+          color={color} size={size}
+            />
           ),
         }}
       />
